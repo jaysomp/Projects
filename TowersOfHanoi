@@ -1,0 +1,110 @@
+import bridges.connect.Bridges;
+import bridges.base.SymbolCollection;
+import bridges.base.Rectangle;
+
+
+
+public class TowersOfHanoi {
+
+	public static void main(String[] args) throws Exception {
+
+		//create Bridges object
+		Bridges bridges = new Bridges(2, "jsompalli",
+			"722442361470");
+		// title, description
+		bridges.setTitle("Towers of Hanoi");
+		bridges.setDescription("Jay Sompalli CS2510 Optional Programing Project #2");
+
+		// create some symbols and add to symbol collection
+		SymbolCollection sc = new SymbolCollection();
+
+		//PEG ONE 
+		Rectangle peg1 = new Rectangle(-100.0f, 0.0f, 5.0f, 80.0f); //(x,y,w,h)
+			peg1.setFillColor("black");
+			peg1.setOpacity(1f);
+		sc.addSymbol(peg1);
+
+		//PEG TWO
+		Rectangle peg2 = new Rectangle(100.0f, 0.0f, 5.0f, 80.0f);
+			peg2.setFillColor("black");
+			peg2.setOpacity(1f);
+		sc.addSymbol(peg2);
+		
+		//PEG THREE
+		Rectangle peg3 = new Rectangle(0.0f, 0.0f, 5.0f, 80.0f);
+		peg3.setFillColor("black");
+		peg3.setOpacity(1f);
+	    sc.addSymbol(peg3);
+	    
+	    //BASE 
+	    Rectangle base = new Rectangle(-10000f, 0f, 1000000f, 3f);
+		base.setFillColor("black");
+		base.setOpacity(1f);
+	    sc.addSymbol(base);
+	    
+	    //DISK 1 MIDDLE
+	    Rectangle disk1 = new Rectangle(-106f, 10f, 20f, 6f);
+		disk1.setFillColor("blue");
+		disk1.setOpacity(1f);
+	    sc.addSymbol(disk1);
+	    
+	    //DISK 2 MIDDLE
+	    Rectangle disk2 = new Rectangle(-111f, 5f, 30f, 6f);
+		disk2.setFillColor("red");
+		disk2.setOpacity(1f);
+	    sc.addSymbol(disk2);
+	    
+	    //DISK 3 LARGEST
+	    Rectangle disk3 = new Rectangle(-116f, 0f, 40f, 6f);
+		disk3.setFillColor("orange");
+		disk3.setOpacity(1f);
+	    sc.addSymbol(disk3);
+	    
+	    
+	    // set visualizer type
+		bridges.setDataStructure(sc);
+
+		// visualize 
+		bridges.visualize();
+		
+		// STEP 1: Disk 1 to Peg 3
+		disk1.translate(200f,-10f);
+		
+		bridges.visualize();
+		
+		// STEP 2: Disk 2 to Peg 2
+        disk2.translate(100f,-5f);
+		
+		bridges.visualize();
+		
+		// STEP 3: Disk 1 from Peg 3 to Peg 2
+        disk1.translate(-100f,5f);
+		
+		bridges.visualize();
+		
+		// STEP 4: Disk 3 From Peg 1 to Peg 3
+        disk3.translate(200f,0f);
+		
+		bridges.visualize();
+		
+		//STEP 5: Disk 1 from Peg 2 to Peg 1
+		disk1.translate(-100f,-5f);
+		
+		bridges.visualize();
+		
+		//STEP 6: Disk 2 from Peg 2 to Peg 3
+		disk2.translate(100f,5f);
+				
+		bridges.visualize();
+		
+		//STEP 7: Disk 2 from Peg 1 to Peg 3
+		disk1.translate(200f,10f);
+						
+		bridges.visualize();
+		
+		
+		
+	}
+}
+
+
